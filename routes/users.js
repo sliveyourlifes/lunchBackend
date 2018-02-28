@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Users = require('../models/Users.js');
 
-/* GET ALL BOOKS */
+/* GET ALL Users */
 router.get('/', function(req, res, next) {
     Users.find(function (err, results) {
     if (err) return next(err);
