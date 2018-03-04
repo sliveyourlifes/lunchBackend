@@ -12,9 +12,18 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "express-logger": "0.0.3",
+    "express-session": "^1.15.6",
+    "logger": "0.0.1",
     "mongodb": "^3.0.3",
-    "mongoose": "^5.0.7"
+    "mongoose": "^5.0.7",
+    "mongoose-findorcreate": "^3.0.0",
+    "passport": "^0.4.0",
+    "passport-yandex": "0.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.15.1"

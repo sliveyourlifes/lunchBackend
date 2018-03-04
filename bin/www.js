@@ -12,7 +12,7 @@ const http = require('http');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || 3000);
 app.set('port', port);
 
 /**
@@ -26,7 +26,7 @@ const server = http.createServer(app);
  */
 
 server.listen(port, () => {
-    console.log('listening on 3000')
+    console.log('listening on' + `${port}`)
   });
 server.on('error', onError);
 server.on('listening', onListening);
