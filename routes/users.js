@@ -4,17 +4,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const Users = require('../models/Users.js');
 
-/* GET ALL Users */
-// router.get('/', function(req, res, next) {
-//     Users.find(function (err, results) {
-//     if (err) return next(err);
-//     res.send(results);
-//   });
-// });
-
 router.get('/', (req,res,next) => {
-  //const userId = req.session.userId;
-  console.log(req.session)
   res.render('index');
 })
 
@@ -30,6 +20,18 @@ router.get('/auth/yandex/callback',
   function(req, res) {
     res.redirect('/');
 });
+
+// router.get('/user', (req,res,next)=> {
+//   Users.findById(req.session.passport.user, (err,user)=> {
+//     if(err) return new Error (err)
+//     // console.log( user.profile);
+//     const account = JSON.parse(user.profile);
+//     console.log(account);
+//     res.render('index', {user: user.profile});
+//   })
+//   next();
+// })
+
 
 
 module.exports = router;
