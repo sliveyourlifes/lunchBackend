@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/logs
 
 # IDEs and editors
 /.idea
@@ -16,7 +17,3 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-
-#Logs 
-/logs
