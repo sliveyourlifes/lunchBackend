@@ -27,13 +27,18 @@ module.exports = function(passport) {
                 callbackURL: "http://localhost:3000/auth/yandex/callback"
             },
             function(accessToken, refreshToken, profile, done) {
-                // console.log(accessToken)
-                // console.log(refreshToken)
-                // console.log(profile)
-                Users.findOneAndUpdate({ profileId: profile.id }, { profile: profile._json },{ new: true , upsert: true } ,function (err, user) {
-                if (err) return new Error(err);
-                return done(err, user);
-                });
+                if(~profile.username.indexOf('@rednavis.com')){
+                    Users.findOneAndUpdate({ profileId: profile.id }, { profile: profile._json },{ new: true , upsert: true } ,function (err, user) {
+                        if (err) return new Error(err);
+                        return done(err, user);
+                        });
+                }
+                else {
+                    console.log('bad connection')
+                }
+                
             }
     ));
 }
+
+

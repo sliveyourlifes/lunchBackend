@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const session = require('express-session');
+const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const users = require('./routes/users');
+const api = require('./routes/api');
+const passportRoutes = require('./routes/passport-routes');
 const logger = require('express-logger');
 const MongoStore = require('connect-mongo')(session);
 
@@ -44,6 +46,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // add routers
-app.use('/', users);
+app.use('/', api);
+app.use('/', passportRoutes);
+
 
 module.exports = app;
