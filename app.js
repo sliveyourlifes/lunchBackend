@@ -6,12 +6,12 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const api = require('./routes/api');
+const appRoutes = require('./routes/app-routes');
 const passportRoutes = require('./routes/passport-routes');
 const logger = require('express-logger');
 const MongoStore = require('connect-mongo')(session);
 
-//coneection to database
+
 const configDB = require('./config/database.js');
 mongoose.Promise = require('bluebird');
 mongoose.connect(configDB.url, { promiseLibrary: require('bluebird') })
@@ -19,9 +19,9 @@ mongoose.connect(configDB.url, { promiseLibrary: require('bluebird') })
   .catch((err) => console.error(err));
 let db = mongoose.connection;
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); 
 
-//configure Express
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -45,8 +45,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// add routers
-app.use('/', api);
+
+app.use('/', appRoutes);
 app.use('/', passportRoutes);
 
 

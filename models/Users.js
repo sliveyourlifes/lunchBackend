@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema(
         profile: Object
     },
     {
-        versionKey: false 
+        versionKey: false
     }
 );
 
