@@ -6,10 +6,17 @@ const Users = require('../models/Users.js');
 const isLoggedIn = require('../middlewares/isLoggenIn');
 const isNotLoggedIn = require('../middlewares/isNotLoggedIn');
 
+router.get('/api/v1/users', isLoggedIn, (req,res,next) => {
+    res.send(
+       req.user.profile
+    );
+});
+
+
 router.get('/', isLoggedIn, (req,res,next) => {
-    res.json({
-      user: req.user.profile
-    });
+    res.send(
+       req.user.profile
+    );
 });
 
 router.get('/not-authenticated', isNotLoggedIn, (req,res) => {
