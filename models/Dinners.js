@@ -6,7 +6,7 @@ const DinnerSchema = new mongoose.Schema({
                 {
                     name: String,
                     description: String,
-                    energy_value: String
+                    energyValue: String
                 }
               ]
     },
