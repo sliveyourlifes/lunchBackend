@@ -14,9 +14,11 @@ router.get('/api/v1/users', isLoggedIn, (req,res,next) => {
 });
 
 router.get('/api/v1/lunch', (req, res, next)=> {
-    LunchDishes.find({}, (err, data) => {
+    const startDate = '2018-03-21T00:00:00.000Z';
+    const endDate = '2018-03-21T23:59:59.999Z';
+    LunchDishes.find({date : {$gte: startDate, $lt: endDate }},(err,data)=> {
         res.send(data);
-    });
+    })
 });
 
 
