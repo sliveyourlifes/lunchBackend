@@ -6,6 +6,7 @@ const Users = require('../models/Users.js');
 const LunchDishes = require('../models/LunchDishes.js');
 const isLoggedIn = require('../middlewares/isLoggenIn');
 const isNotLoggedIn = require('../middlewares/isNotLoggedIn');
+const LunchOrders = require('../models/LunchOrders')
 
 router.get('/api/v1/users', isLoggedIn, (req,res,next) => {
     res.send(
@@ -20,6 +21,18 @@ router.get('/api/v1/lunch', (req, res, next)=> {
         res.send(data);
     })
 });
+
+router.post('/api/v1/lunch', isLoggedIn ,(req, res, next)=> {
+    console.log(req.body);
+    console.log(req.user);
+    let order = new LunchOrders({user: req.user._id, dishes:req.body});
+    order.save(function (err, order) {
+        if (err) return console.error(err);
+        console.log('save order');
+      });
+
+    // req.send(req)
+})
 
 
 router.get('/', isLoggedIn, (req,res,next) => {
