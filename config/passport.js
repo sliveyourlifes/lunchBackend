@@ -9,7 +9,7 @@ const haveRednavisEmail = (emails) => {
 };
 
 const handleLoggedUser = (profile, done) => {
-    Users.findOneAndUpdate({ profileId: profile.id },{ profile: profile._json ,_id: new mongoose.Types.ObjectId()}, { new: true , upsert: true },
+    Users.findOneAndUpdate({ profileId: profile.id },{ profile: profile._json }, { new: true , upsert: true },
         function (err, user) {
             done(err, user);
         }
