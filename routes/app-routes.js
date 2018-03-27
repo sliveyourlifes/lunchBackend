@@ -31,7 +31,11 @@ router.post('/api/v1/lunch', isLoggedIn ,(req, res, next)=> {
         console.log('save order');
       });
 
-    // req.send(req)
+    LunchOrders.findOne({user: req.user._id}, (err , data) =>{
+        if (err) return console.error(err);
+        console.log(data);
+        res.send(data);
+    });
 })
 
 
